@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Sklep Komputerowy</string>
+    <string name="number">ILOŚĆ</string>
+    <string name="name">NAZWA</string>
+    <string name="mouse">Mysz</string>
+    <string name="keyboard">Klawiatura</string>
+    <string name="camera">Kamera</string>
+    <string name="save">Zapisz</string>
+    <string name="price">Cena</string>
+    <string name="numb">Ilość</string>
+    <string name="zamawiam">Zamawiam</string>
+</resources>
