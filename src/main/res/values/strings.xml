@@ -9,4 +9,6 @@
     <string name="price">Cena</string>
     <string name="numb">Ilość</string>
     <string name="zamawiam">Zamawiam</string>
+    <string name="order">Zamównienie</string>
+    <string name="cantSendOrder">"Nie można wysłać zamównienia, ponieważ ilość wynosi 0 elementów."</string>
 </resources>

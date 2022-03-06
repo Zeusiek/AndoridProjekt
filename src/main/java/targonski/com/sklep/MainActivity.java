@@ -22,10 +22,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Products products;
     Button order;
     int totalOrder;
-    int chosenComputer;
+    int chosenComputer, compNr;
+
+    MyAdapter myAdapter;
+    MyAdapter kamerki;
+    MyAdapter myszki;
+    MyAdapter klawy;
 
     public CheckBox mouseBox, keyboardBox, cameraBox;
     public Slider slider;
+
 
     Spinner comp, kl, cm, ms;
     String[] opis, mysze, klawiatury, camery;
@@ -43,12 +49,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 .setText(String.valueOf((int)slider.getValue())));
 
         order = findViewById(R.id.order);
-        order.setOnClickListener(v -> adapterViews.sumUp());
+        order.setOnClickListener(v -> order());
 
         mouseBox = findViewById(R.id.AddMouse);
         keyboardBox = findViewById(R.id.AddKeyboard);
         cameraBox = findViewById(R.id.AddCamera);
-
 
         products = new Products(getApplicationContext());
 
@@ -72,10 +77,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         cm.setOnItemSelectedListener(adapterViews.camInt());
         ms.setOnItemSelectedListener(adapterViews.myszInt());
 
-        MyAdapter myAdapter = new MyAdapter(getApplicationContext(), pcs, opis);
-        MyAdapter kamerki = new MyAdapter(getApplicationContext(), cams, camery);
-        MyAdapter myszki = new MyAdapter(getApplicationContext(), msz, mysze);
-        MyAdapter klawy = new MyAdapter(getApplicationContext(), klaw, klawiatury);
+        myAdapter = new MyAdapter(getApplicationContext(), pcs, opis);
+        kamerki = new MyAdapter(getApplicationContext(), cams, camery);
+        myszki = new MyAdapter(getApplicationContext(), msz, mysze);
+        klawy = new MyAdapter(getApplicationContext(), klaw, klawiatury);
 
         comp.setAdapter(myAdapter);
         kl.setAdapter(klawy);
@@ -92,6 +97,47 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
+    public void printTotal(){
+        print(String.valueOf(totalOrder));
+    }
+    public void print(String s){
+        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+    }
+    public void order(){
+        adapterViews.sumUp();
+        if (totalOrder == 0) {
+            Toast.makeText(this, getText(R.string.cantSendOrder),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String orderText = createOrderText(adapterViews.orderedThings());
+        sendMail(orderText);
+
+
+    }
+    private void sendMail(String text){
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"recipient@example.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order));
+        i.putExtra(Intent.EXTRA_TEXT, text);
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+            startActivity(new Intent(this, MainActivity.class));
+
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    private String createOrderText(MySet[] set){
+        return getString(R.string.order) + ":\n" +
+                Products.returnComps()[compNr] +"zł x"+(int)slider.getValue()+"\n" +
+                (cameraBox.isChecked()?getString(R.string.camera)+": "+set[0]+"zł x"+(int)slider.getValue()+"\n":"")+
+                (keyboardBox.isChecked()?getString(R.string.keyboard)+": "+set[1]+"zł x"+(int)slider.getValue()+"\n":"")+
+                (mouseBox.isChecked()?getString(R.string.mouse)+": "+set[2]+"zł x"+(int)slider.getValue()+"\n":"");
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         switch (i){
@@ -100,32 +146,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             case 2: chosenComputer = 7760; break;
             default:
         }
+        compNr = i;
     }
-
-
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) { }
-
-
-    public void printTotal(){
-        print(String.valueOf(totalOrder));
-    }
-    public void print(String s){
-        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-    }
-    public void order(){
-        sendMail();
-    }
-    private void sendMail(){
-        Intent i = new Intent(Intent.ACTION_SEND);
-        i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"recipient@example.com"});
-        i.putExtra(Intent.EXTRA_SUBJECT, "Zamówienie");
-        i.putExtra(Intent.EXTRA_TEXT, "test");
-        try {
-            startActivity(Intent.createChooser(i, "Send mail..."));
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-        }
-    }
 }

@@ -9,4 +9,7 @@
     <string name="save">Save</string>
     <string name="price">Price</string>
     <string name="numb">Number</string>
+    <string name="zamawiam">Send order</string>
+    <string name="order">Order</string>
+    <string name="cantSendOrder">Can not order: number of products is equal to 0.</string>
 </resources>
