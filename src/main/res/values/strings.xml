@@ -11,4 +11,6 @@
     <string name="zamawiam">Zamawiam</string>
     <string name="order">Zamównienie</string>
     <string name="cantSendOrder">"Nie można wysłać zamównienia, ponieważ ilość wynosi 0 elementów."</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="anuluj">anuluj</string>
 </resources>

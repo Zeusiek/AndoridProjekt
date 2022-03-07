@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Computer Shop</string>
+    <string name="number">AMMOUNT</string>
+    <string name="name">NAME</string>
+    <string name="mouse">Mouse</string>
+    <string name="keyboard">Keyboard</string>
+    <string name="camera">Camera</string>
+    <string name="save">Save</string>
+    <string name="price">Price</string>
+    <string name="numb">Number</string>
+    <string name="zamawiam">Send order</string>
+    <string name="order">Order</string>
+    <string name="cantSendOrder">Can not order: number of products is equal to 0.</string>
+</resources>

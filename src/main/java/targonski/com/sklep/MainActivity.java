@@ -1,27 +1,35 @@
 package targonski.com.sklep;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.slider.Slider;
 
-import java.util.Arrays;
+import targonski.com.sklep.elements.AdapterViews;
+import targonski.com.sklep.elements.MyAdapter;
+import targonski.com.sklep.elements.MySet;
+import targonski.com.sklep.elements.Products;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity
+        implements AdapterView.OnItemSelectedListener {
+
+    boolean canSendSMS = false;
+
     AdapterViews adapterViews;
     Products products;
     Button order;
-    int totalOrder;
+    int totalOrder = 0;
     int chosenComputer, compNr;
 
     MyAdapter myAdapter;
@@ -41,6 +49,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        registerForActivityResult(new ActivityResultContracts.RequestPermission(),
+                result -> canSendSMS = result).launch(Manifest.permission.SEND_SMS);
+
+        
         adapterViews = new AdapterViews(this);
 
         slider = findViewById(R.id.numbPick);
@@ -89,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void sumUp(int[] sum){
+    public void sumAllUp(int[] sum){
         int sum1 = (mouseBox.isChecked()?sum[2]:0) +
                 (keyboardBox.isChecked()?sum[1]:0) +
                 (cameraBox.isChecked() ? sum[0]:0);
@@ -103,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void print(String s){
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
     }
-    public void order(){
+    private void order(){
         adapterViews.sumUp();
         if (totalOrder == 0) {
             Toast.makeText(this, getText(R.string.cantSendOrder),
@@ -111,31 +124,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             return;
         }
         String orderText = createOrderText(adapterViews.orderedThings());
-        sendMail(orderText);
-
-
+        sumAllUp(orderText);
     }
-    private void sendMail(String text){
-        Intent i = new Intent(Intent.ACTION_SEND);
-        i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"recipient@example.com"});
-        i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order));
-        i.putExtra(Intent.EXTRA_TEXT, text);
-        try {
-            startActivity(Intent.createChooser(i, "Send mail..."));
-            startActivity(new Intent(this, MainActivity.class));
-
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-        }
-
+    private void sumAllUp(String finish){
+        Intent intent = new Intent(this, SumUp.class);
+        intent.putExtra("finishString", finish);
+        intent.putExtra("count", (int)slider.getValue());
+        intent.putExtra("totalSum", totalOrder);
+        startActivity(intent);
     }
+
+
+
     private String createOrderText(MySet[] set){
-        return getString(R.string.order) + ":\n" +
-                Products.returnComps()[compNr] +"zł x"+(int)slider.getValue()+"\n" +
-                (cameraBox.isChecked()?getString(R.string.camera)+": "+set[0]+"zł x"+(int)slider.getValue()+"\n":"")+
-                (keyboardBox.isChecked()?getString(R.string.keyboard)+": "+set[1]+"zł x"+(int)slider.getValue()+"\n":"")+
-                (mouseBox.isChecked()?getString(R.string.mouse)+": "+set[2]+"zł x"+(int)slider.getValue()+"\n":"");
+        return getString(R.string.order) + ":\n\n" +
+                "-"+Products.returnComps()[compNr] +"zł x"+(int)slider.getValue()+"\n\n" +
+                (cameraBox.isChecked()?"-"+getString(R.string.camera)+": "+set[0]+"zł x"+(int)slider.getValue()+"\n\n":"")+
+                (keyboardBox.isChecked()?"-"+getString(R.string.keyboard)+": "+set[1]+"zł x"+(int)slider.getValue()+"\n\n":"")+
+                (mouseBox.isChecked()?"-"+getString(R.string.mouse)+": "+set[2]+"zł x"+(int)slider.getValue():"");
     }
 
     @Override
