@@ -13,4 +13,10 @@
     <string name="cantSendOrder">"Nie można wysłać zamównienia, ponieważ ilość wynosi 0 elementów."</string>
     <string name="ok" translatable="false">OK</string>
     <string name="anuluj">anuluj</string>
+    <string name="send_email">Wyślij e-mail</string>
+    <string name="send_sms">Wyślij SMS</string>
+    <string name="mainPage">Strona Główna</string>
+    <string name="author">Autor</string>
+    <string name="myOrders">Moje zamówienia</string>
+    <string name="shop">Sklep</string>
 </resources>

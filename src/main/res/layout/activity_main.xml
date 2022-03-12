@@ -1,87 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".Main"
+    android:orientation="vertical"
+    android:background="@color/black">
 
-    <Spinner
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/mainspiner"
-        />
-
-    <LinearLayout
+        android:textColor="@color/main"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Witaj w sklepie komputerowym!"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <com.google.android.material.slider.Slider
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:stepSize="1"
-            android:id="@+id/numbPick"
-            />
-        <TextView
+        android:text="OFERTA"
+        android:textStyle="bold"
+        android:padding="10dp"/>
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
-            android:textAlignment="center"
-            android:width="50dp"
-            android:height="50dp"
-            android:textIsSelectable="false"
-            android:gravity="center"
-            android:textFontWeight="900"
-            android:id="@+id/wieViel"
-            />
-    </LinearLayout>
-
-
-
-
-    <CheckBox
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mouse"
-        android:textAllCaps="true"
-        android:id="@+id/AddMouse"
-        />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/MouseSpinner"
-        />
-    <CheckBox
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/keyboard"
-        android:textAllCaps="true"
-        android:id="@+id/AddKeyboard"
-        />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/KeyboardSpinner"
-        />
-    <CheckBox
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/camera"
-        android:textAllCaps="true"
-        android:id="@+id/AddCamera"
-        />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/CameraSpinner"
-        />
-
+            android:orientation="horizontal">
+            <include layout="@layout/productsmap" />
+        </LinearLayout>
+    </HorizontalScrollView>
     <Button
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/zamawiam"
-        android:id="@+id/order"
+        android:layout_margin="10dp"
+        android:id="@+id/startBuy"
+        android:backgroundTint="@color/main"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="ZACZNIJ ZAKUPY!"
         />
 
 </LinearLayout>

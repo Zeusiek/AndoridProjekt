@@ -1,9 +1,5 @@
 package targonski.com.sklep;
 
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,15 +12,13 @@ import android.widget.Toast;
 
 import com.google.android.material.slider.Slider;
 
+import androidx.appcompat.app.AppCompatActivity;
 import targonski.com.sklep.elements.AdapterViews;
 import targonski.com.sklep.elements.MyAdapter;
 import targonski.com.sklep.elements.MySet;
 import targonski.com.sklep.elements.Products;
 
-public class MainActivity extends AppCompatActivity
-        implements AdapterView.OnItemSelectedListener {
-
-    boolean canSendSMS = false;
+public class ShopActivity extends Extender implements AdapterView.OnItemSelectedListener {
 
     AdapterViews adapterViews;
     Products products;
@@ -48,12 +42,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.shop);
 
-        registerForActivityResult(new ActivityResultContracts.RequestPermission(),
-                result -> canSendSMS = result).launch(Manifest.permission.SEND_SMS);
-
-        
         adapterViews = new AdapterViews(this);
 
         slider = findViewById(R.id.numbPick);
@@ -124,21 +114,23 @@ public class MainActivity extends AppCompatActivity
             return;
         }
         String orderText = createOrderText(adapterViews.orderedThings());
-        sumAllUp(orderText);
+        sumAllUp(orderText, adapterViews.orderedThings());
     }
-    private void sumAllUp(String finish){
+    private void sumAllUp(String finish, MySet[] set){
         Intent intent = new Intent(this, SumUp.class);
         intent.putExtra("finishString", finish);
+        intent.putExtra("cmpnr", compNr);
+        intent.putExtra("cmra", (cameraBox.isChecked()?set[0].getOpis():null));
+        intent.putExtra("keybr", (keyboardBox.isChecked()?set[1].getOpis():null));
+        intent.putExtra("mouse", (mouseBox.isChecked()?set[2].getOpis():null));
         intent.putExtra("count", (int)slider.getValue());
         intent.putExtra("totalSum", totalOrder);
         startActivity(intent);
     }
 
 
-
     private String createOrderText(MySet[] set){
-        return getString(R.string.order) + ":\n\n" +
-                "-"+Products.returnComps()[compNr] +"zł x"+(int)slider.getValue()+"\n\n" +
+        return "-"+Products.returnComps()[compNr] +"zł x"+(int)slider.getValue()+"\n\n" +
                 (cameraBox.isChecked()?"-"+getString(R.string.camera)+": "+set[0]+"zł x"+(int)slider.getValue()+"\n\n":"")+
                 (keyboardBox.isChecked()?"-"+getString(R.string.keyboard)+": "+set[1]+"zł x"+(int)slider.getValue()+"\n\n":"")+
                 (mouseBox.isChecked()?"-"+getString(R.string.mouse)+": "+set[2]+"zł x"+(int)slider.getValue():"");

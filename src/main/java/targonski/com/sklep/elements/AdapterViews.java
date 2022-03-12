@@ -3,15 +3,13 @@ package targonski.com.sklep.elements;
 import android.view.View;
 import android.widget.AdapterView;
 
-import java.util.Arrays;
-
-import targonski.com.sklep.MainActivity;
+import targonski.com.sklep.ShopActivity;
 
 public class AdapterViews {
      public int[] add = new int[3];
      private final byte[] chosenItems = new byte[3];
-     MainActivity mainActivity;
-     public AdapterViews(MainActivity activity){
+     ShopActivity mainActivity;
+     public AdapterViews(ShopActivity activity){
          mainActivity = activity;
      }
 

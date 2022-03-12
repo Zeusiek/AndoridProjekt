@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="anuluj">cancel</string>
+    <string name="app_name">Computer Center</string>
+    <string name="number">NUMBER</string>
+    <string name="name">NAME</string>
+    <string name="mouse">Mouse</string>
+    <string name="keyboard">Keyboerd</string>
+    <string name="camera">Camera</string>
+    <string name="save">Save</string>
+    <string name="price">Price</string>
+    <string name="numb">Number</string>
+    <string name="zamawiam">Order</string>
+    <string name="order">Order</string>
+    <string name="cantSendOrder">Can not send the order while number of elements is equal to 0.</string>
+    <string name="send_email">Send e-mail</string>
+    <string name="send_sms">Send SMS</string>
+    <string name="mainPage">Main Page</string>
+    <string name="author">Author</string>
+    <string name="myOrders">My orders</string>
+    <string name="shop">Shop</string>
 </resources>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/komp1"
+            android:background="@color/main">
+        </ImageView>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:padding = "5dp"
+            android:textAlignment="center"
+            android:text="Intel Core i5 12400 6 X 2,4GHz 16GB RAM DDR4 SSD 250GB M.2 + HDD 1TB Sata GTX 1050 Ti 4GB"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/komp2"
+
+            android:background="@color/main">
+        </ImageView>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:padding = "5dp"
+            android:textAlignment="center"
+            android:text="Intel Core i7 11700 6 X 2,9GHz 16GB RAM DDR4 SSD 500GB M.2 + HDD 1TB Sata GTX 1660 Ti 6GB"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/komp3"
+
+            android:background="@color/main">
+        </ImageView>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:padding = "5dp"
+            android:textAlignment="center"
+            android:text="RYZEN 9 3900X 12 X 3,8GHz 32GB RAM DDR4 SSD 500GB M.2 GTX 2060 Ti 6GB"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/kam1"
+
+            android:background="@color/main">
+        </ImageView>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:padding = "5dp"
+            android:textAlignment="center"
+            android:text="WEBCAM A300 USB"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/kam2"
+
+            android:background="@color/main">
+        </ImageView>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:padding = "5dp"
+            android:textAlignment="center"
+            android:text="DUXO CAM 200"
+            />
+    </LinearLayout><LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginStart="10dp">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/kam3"
+
+        android:background="@color/main">
+    </ImageView>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:padding = "5dp"
+        android:textAlignment="center"
+        android:text="SONY WEBCAMERA S2330"
+        />
+</LinearLayout><LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginStart="10dp">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/klaw1"
+        android:background="@color/main">
+    </ImageView>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:padding = "5dp"
+        android:textAlignment="center"
+        android:text="TITANUM TK101 USB"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/klaw2"
+            android:background="@color/main">
+        </ImageView>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:padding = "5dp"
+            android:textAlignment="center"
+            android:text="ASUS A144 USB"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/klaw3"
+
+            android:background="@color/main">
+        </ImageView>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:padding = "5dp"
+            android:textAlignment="center"
+            android:text="ASUS A233 USB"
+            />
+    </LinearLayout><LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginStart="10dp">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/mysz1"
+        android:background="@color/main">
+    </ImageView>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:padding = "5dp"
+        android:textAlignment="center"
+        android:text="Dell MS116"
+        />
+</LinearLayout><LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginStart="10dp">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/mysz2"
+
+        android:background="@color/main">
+    </ImageView>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:padding = "5dp"
+        android:textAlignment="center"
+        android:text="GForce 1245"
+        />
+</LinearLayout><LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginStart="10dp">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/mysz3"
+
+        android:background="@color/main">
+    </ImageView>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:padding = "5dp"
+        android:textAlignment="center"
+        android:text="ASUS A234"
+        />
+</LinearLayout>
+
+
+
+
+</LinearLayout>
