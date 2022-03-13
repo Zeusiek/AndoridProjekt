@@ -52,13 +52,20 @@ public class SumUp extends AppCompatActivity {
         });
 
         Button accept = findViewById(R.id.okayButton);
+        String stringUser = getIntent().getStringExtra("login");
+
         accept.setOnClickListener(v -> {
+            System.out.println(stringUser);
             MyDB d = new MyDB(this, null, null, 3);
             System.out.println(d.insertInto(Products.returnComps()[i.getIntExtra("cmpnr", 0)]
                             .getOpis(), orderedAddons[0], orderedAddons[1], orderedAddons[2],
-                    i.getIntExtra("count", 1), i.getIntExtra("totalSum",0)
+                    i.getIntExtra("count", 1), i.getIntExtra("totalSum",0),
+                    stringUser
             ));
             d.close();
+            Intent intent = new Intent(this, Main.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             finish();
 
         });

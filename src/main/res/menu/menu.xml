@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <group android:menuCategory="container">
         <item android:id="@+id/menuMain"
             android:title="@string/mainPage"/>
@@ -9,5 +10,7 @@
             android:title="@string/myOrders"/>
         <item android:id="@+id/menuAuthor"
         android:title="@string/author"/>
+        <item android:id="@+id/logout"
+            android:title="@string/wyloguj_si"/>
     </group>
 </menu>

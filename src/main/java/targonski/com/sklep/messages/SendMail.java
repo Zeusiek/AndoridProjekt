@@ -18,7 +18,7 @@ public final class SendMail {
     public static void sendMail(Context context, String text){
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"recipient@example.com"});
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
         i.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.order));
         i.putExtra(Intent.EXTRA_TEXT, text);
         try {

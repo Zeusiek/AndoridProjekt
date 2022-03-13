@@ -125,6 +125,7 @@ public class ShopActivity extends Extender implements AdapterView.OnItemSelected
         intent.putExtra("mouse", (mouseBox.isChecked()?set[2].getOpis():null));
         intent.putExtra("count", (int)slider.getValue());
         intent.putExtra("totalSum", totalOrder);
+        intent.putExtra("login", getIntent().getStringExtra("login"));
         startActivity(intent);
     }
 

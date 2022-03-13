@@ -17,7 +17,7 @@ public class MyDB extends SQLiteOpenHelper {
 
     public MyDB(@Nullable Context context, @Nullable String name,
                      @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, "Sklep.db", null, 1);
+        super(context, "Sklep.db", null, 9);
     }
 
     @Override
@@ -25,23 +25,34 @@ public class MyDB extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE orders (" +
                 "orderId INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "compName TEXT NOT NULL, mouse TEXT, camera TEXT, keyboard TEXT, numb INTEGER NOT NULL," +
-                "price INTIGER NOT NULL)"
+                "price INTEGER NOT NULL, user TEXT)"
         );
+        db.execSQL("CREATE TABLE users(" +
+                "login TEXT NOT NULL," +
+                "password TEXT NOT NULL)");
     }
-    public boolean updateOrder(int id, String comp, String mouse, String camera, String keyboard, int numb, int price){
+
+    public Cursor returnUser(String login){
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM users WHERE TRIM(login) = '"+login.trim() + "';", null);
+    }
+    public Cursor returnUserPass(String login){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String s = "SELECT password FROM users WHERE TRIM(login) = '"+login.trim() + "';";
+        return db.rawQuery(s, null);
+    }
+    public boolean register(String login, String pass){
+        Cursor cursor = returnUser(login);
+        if (cursor.moveToFirst()) return false;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("compName", comp);
-        contentValues.put("mouse", mouse);
-        contentValues.put("camera", camera);
-        contentValues.put("keyboard", keyboard);
-        contentValues.put("numb", numb);
-        contentValues.put("price", price);
-        db.update("orders", contentValues, "id = ? ",
-                new String[]{Integer.toString(id)});
+        contentValues.put("login", login.trim());
+        contentValues.put("password", pass.trim());
+        db.insert("users", null, contentValues);
         return true;
     }
-    public boolean insertInto(String comp, String mouse, String camera, String keyboard, int numb, int price){
+    public boolean insertInto(String comp, String mouse, String camera, String keyboard
+            , int numb, int price, String user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("compName", comp);
@@ -50,28 +61,25 @@ public class MyDB extends SQLiteOpenHelper {
         contentValues.put("keyboard", keyboard);
         contentValues.put("numb", numb);
         contentValues.put("price", price);
+        contentValues.put("user", user);
         db.insert("orders", null, contentValues);
         return true;
     }
 
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS products");
-        onCreate(db);
-    }
     public Cursor selectAll(){
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM orders WHERE 1", null);
     }
-
-    public Cursor getData(int id){
+    public Cursor selectAll(String login){
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM orders WHERE orderId = " + id + "", null);
+        return db.rawQuery("SELECT * FROM orders WHERE TRIM(user) = '"
+                + login.trim() + "';", null);
     }
-    public int deleteOrder(int id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete("orders", "id = ? ",
-                new String[] { Integer.toString(id) });
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("DROP TABLE IF EXISTS users;");
+        db.execSQL("DROP TABLE IF EXISTS orders;");
+        onCreate(db);
     }
 }

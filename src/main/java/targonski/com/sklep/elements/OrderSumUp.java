@@ -11,6 +11,7 @@ import targonski.com.sklep.R;
 
 public class OrderSumUp extends ArrayAdapter<String> {
 
+
     private final Activity context;
     private final String[] comps;
     private final String[] numb;
@@ -42,11 +43,11 @@ public class OrderSumUp extends ArrayAdapter<String> {
         TextView keybTXT = rowView.findViewById(R.id.keybText);
         TextView mausTXT = rowView.findViewById(R.id.mousText);
 
-        if(cmrs[position] != null) cmrsTXT.setTextSize(0);
+        if(cmrs[position] == null) cmrsTXT.setTextSize(0);
         else cmrsTXT.setTextSize(15);
-        if(keyb[position] != null) keybTXT.setTextSize(0);
+        if(keyb[position] == null) keybTXT.setTextSize(0);
         else keybTXT.setTextSize(15);
-        if(maus[position] != null) mausTXT.setTextSize(0);
+        if(maus[position] == null) mausTXT.setTextSize(0);
         else mausTXT.setTextSize(15);
 
         String x = " X"+numb[position];

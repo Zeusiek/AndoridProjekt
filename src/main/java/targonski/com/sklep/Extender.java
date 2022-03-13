@@ -14,18 +14,22 @@ public class Extender extends AppCompatActivity {
 
     public void menuMain(){
         if(this.getClass().getSimpleName().equals("Main")) return;
-
+        Intent intent = new Intent(this, Main.class);
+        intent.putExtra("login", getIntent().getStringExtra("login"));
+        startActivity(intent);
         finish();
     }
     public void menuShop(){
         if(this.getClass().getSimpleName().equals("ShopActivity")) return;
         Intent intent = new Intent(this, ShopActivity.class);
+        intent.putExtra("login", getIntent().getStringExtra("login"));
         startActivity(intent);
         if(!this.getClass().getSimpleName().equals("Main")) finish();
     }
     public void menuOrders(){
         if(this.getClass().getSimpleName().equals("MyOrders")) return;
         Intent intent = new Intent(this, MyOrders.class);
+        intent.putExtra("login", getIntent().getStringExtra("login"));
         startActivity(intent);
         if(!this.getClass().getSimpleName().equals("Main")) finish();
     }
@@ -38,7 +42,6 @@ public class Extender extends AppCompatActivity {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -50,6 +53,9 @@ public class Extender extends AppCompatActivity {
                 break;
             case R.id.menuOrders:
                 menuOrders();
+                break;
+            case R.id.logout:
+                Login.logOut(this);
                 break;
             case R.id.menuAuthor:
                 menuAuthor();

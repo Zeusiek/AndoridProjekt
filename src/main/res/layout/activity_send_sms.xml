@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ShopActivity">
+    tools:context=".ShopActivity"
+    android:background="@color/black">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
-        android:hint="Numer Telefonu"
+        android:hint="@string/numer_telefonu"
         android:id="@+id/number"
+        android:textColor="@color/main"
         android:layout_margin="20dp"
         android:autofillHints="no" />
 
@@ -33,12 +35,15 @@
             android:layout_height="wrap_content"
             android:text="@string/anuluj"
             android:id="@+id/cancel"
+            android:textColor="@color/black"
             android:backgroundTint="#ff2222"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Wyślij"
             android:id="@+id/button"
+            android:textColor="@color/black"
+            android:backgroundTint="#22ff22"
             android:layout_gravity="center"/>
 
     </LinearLayout>

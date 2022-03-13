@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MyOrders extends Extender {
 
@@ -28,15 +29,21 @@ public class MyOrders extends Extender {
 
 
         MyDB myDB = new MyDB(this, null,null, 2);
+        String u = getIntent().getStringExtra("login");
+
         Cursor cursor = myDB.selectAll();
+
         if(cursor.moveToFirst())
         do{
-            comps.add(cursor.getString(1));
-            mouse.add(cursor.getString(2));
-            keyboard.add(cursor.getString(3));
-            camera.add(cursor.getString(4));
-            numb.add(String.valueOf(cursor.getInt(5)));
-            prices.add(String.valueOf(cursor.getInt(6)));
+            String user = cursor.getString(7);
+            if(user.equals(u)){
+                comps.add(cursor.getString(1));
+                mouse.add(cursor.getString(2));
+                keyboard.add(cursor.getString(3));
+                camera.add(cursor.getString(4));
+                numb.add(String.valueOf(cursor.getInt(5)));
+                prices.add(String.valueOf(cursor.getInt(6)));
+            }
         }while (cursor.moveToNext());
 
         listView.setAdapter(new OrderSumUp(this, comps.toArray(new String[0]),

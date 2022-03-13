@@ -19,4 +19,12 @@
     <string name="author">Author</string>
     <string name="myOrders">My orders</string>
     <string name="shop">Shop</string>
+    <string name="oferta">OFFER</string>
+    <string name="witaj_w_sklepie_komputerowym">Welcome to computer shop!</string>
+    <string name="zacznij_zakupy">START BUYING!</string>
+    <string name="has_o">Password</string>
+    <string name="notFount">User not found</string>
+    <string name="wrongPass">Wrong password</string>
+    <string name="numer_telefonu">Telephone number</string>
+    <string name="wyloguj_si">Log out</string>
 </resources>

@@ -14,11 +14,11 @@
         android:padding="10dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Witaj w sklepie komputerowym!"/>
+        android:text="@string/witaj_w_sklepie_komputerowym"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OFERTA"
+        android:text="@string/oferta"
         android:textStyle="bold"
         android:padding="10dp"/>
     <HorizontalScrollView
@@ -40,7 +40,7 @@
         android:backgroundTint="@color/main"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:text="ZACZNIJ ZAKUPY!"
+        android:text="@string/zacznij_zakupy"
         />
 
 </LinearLayout>

@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sklep">
         <activity
+            android:name=".Login"
+            android:exported="true"
+            android:icon="@drawable/komp3"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".elements.OrderSumUp"
             android:exported="false" />
         <activity
@@ -18,12 +28,8 @@
         <activity
             android:name=".Main"
             android:exported="true"
-            android:icon="@drawable/komp3">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+           >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ShopActivity"
