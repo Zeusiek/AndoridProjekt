@@ -17,6 +17,8 @@
         android:textColor="@color/main"
         android:lines="1"
         android:textColorHint="@color/main"
+        android:inputType="textWebEditText"
+        android:maxLines="1"
         android:hint="@string/login"
         android:layout_marginHorizontal="20dp"
         />
@@ -24,6 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/passw"
+        android:maxLines="1"
+        android:inputType="textPassword"
         android:hint="@string/has_o"
         android:textColorHint="@color/main"
         android:lines="1"
