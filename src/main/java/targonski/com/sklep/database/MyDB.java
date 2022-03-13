@@ -17,7 +17,7 @@ public class MyDB extends SQLiteOpenHelper {
 
     public MyDB(@Nullable Context context, @Nullable String name,
                      @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, "Sklep.db", null, 9);
+        super(context, "Sklep.db", null, 10);
     }
 
     @Override

@@ -65,6 +65,7 @@ public class SumUp extends AppCompatActivity {
             d.close();
             Intent intent = new Intent(this, Main.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("login", stringUser);
             startActivity(intent);
             finish();
 
